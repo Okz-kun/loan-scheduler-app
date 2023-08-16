@@ -1,0 +1,32 @@
+<div class="loan-header">
+  <h2>Loan Scheduler</h2>
+</div>
+<br>
+<div class="input-container">
+  <label for="sellingPrice" class="label">Selling Price:</label>
+  <input id="sellingPrice" type="number" class="input" [(ngModel)]="sellingPrice">
+
+  <label for="reservationDate" class="label">Reservation Date:</label>
+  <input id="reservationDate" type="date" class="input" [(ngModel)]="reservationDate">
+
+  <label for="equityTerm" class="label">Equity Term:</label>
+  <input id="equityTerm" type="number" class="input" [(ngModel)]="equityTerm">
+
+  <button class="button" (click)="generateResult()">Generate Result</button>
+</div>
+<br>
+<div class="page-container">
+  <div class="result-container">
+    <div *ngFor="let result of results" class="result-item">
+      <p>Balance: {{ result.Balance | number : '1.2-2'}}</p>
+      <p>Due Date: {{ result.DueDate  | date: 'MM/dd/yyyy' }}</p>
+      <p>Term: {{ result.Term }}</p>
+      <p class="details-title">Details:</p>
+      <div class="details">
+        <p>Amount: {{ result.Details?.Amount | number : '1.2-2'}}</p>
+        <p>Interest: {{ result.Details?.Interest | number : '1.2-2'}}</p>
+        <p>Insurance: {{ result.Details?.Insurance | number : '1.2-2'}}</p>
+      </div>
+    </div>
+  </div>
+</div>
